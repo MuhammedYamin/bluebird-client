@@ -8,7 +8,7 @@ const Blog = () => {
   return (
     <section
       id="blog"
-      className="bg-gray-light dark:bg-bg-color-dark py-16 md:py-20 lg:py-28"
+      className="bg-gray-light py-16 dark:bg-bg-color-dark md:py-20 lg:py-28"
       data-aos="zoom-out"
     >
       <div className="container">
@@ -18,9 +18,9 @@ const Blog = () => {
           center
         />
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 md:gap-x-6 lg:gap-x-8 xl:grid-cols-3">
-        {blogData.map((blog, index) => (
-  <div key={`${blog.id}-${index}`} className="w-full">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+          {blogData.slice(0, 3).map((blog, index) => (
+            <div key={`${blog.id}-${index}`} className="w-full">
               <SingleBlog blog={blog} />
             </div>
           ))}
