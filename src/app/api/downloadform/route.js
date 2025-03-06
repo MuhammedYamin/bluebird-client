@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import otpStore from "@/app/utils/otpStore"; // Import global OTP store
+import otpStore from "@/app/utils/otpStore";
 
 export async function POST(req) {
   try {
@@ -20,7 +20,7 @@ export async function POST(req) {
     const { OTP, expiresAt } = storedData;
 
     if (Date.now() > expiresAt) {
-      otpStore.delete(email); // Remove expired OTP
+      otpStore.delete(email); 
       return NextResponse.json({ error: "OTP has expired. Please request a new one." }, { status: 403 });
     }
 
@@ -28,16 +28,14 @@ export async function POST(req) {
       return NextResponse.json({ error: "Invalid OTP" }, { status: 403 });
     }
 
-    otpStore.delete(email); // ✅ Remove OTP after successful verification
+    otpStore.delete(email); 
 
-    // Path to the contacts.xlsx file
     const filePath = path.join(process.cwd(), "private", "contacts.xlsx");
 
     if (!fs.existsSync(filePath)) {
       return NextResponse.json({ error: "File Not Found" }, { status: 404 });
     }
 
-    // Read and send the file
     const fileBuffer = fs.readFileSync(filePath);
 
     return new Response(fileBuffer, {

@@ -7,7 +7,7 @@ const starIcon = (
 );
 
 const SingleTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
-  const { star, name, image, content, designation } = testimonial;
+  const { star, name, content, designation } = testimonial;
 
   let ratingIcons = [];
   for (let index = 0; index < star; index++) {
@@ -26,9 +26,7 @@ const SingleTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
           “{content}
         </p>
         <div className="flex items-center">
-          <div className="relative mr-4 h-[50px] w-full max-w-[50px] overflow-hidden rounded-full">
-            <Image src={image} alt={name} fill />
-          </div>
+         
           <div className="w-full">
             <h3 className="mb-1 text-lg font-semibold text-dark dark:text-white lg:text-base xl:text-lg">
               {name}

@@ -44,7 +44,7 @@ const Contact = () => {
             <p className="mb-12 text-center text-base font-medium text-body-color">
               Our support team will get back to you ASAP via WhatsApp.
             </p>
-            
+
             {/* ✅ FIXED: onSubmit added */}
             <form onSubmit={handleSubmit}>
               <div className="-mx-4 flex flex-wrap">
@@ -55,6 +55,7 @@ const Contact = () => {
                     </label>
                     <input
                       type="text"
+                      id="name"
                       name="name"
                       placeholder="Enter your name"
                       value={formData.name}
@@ -116,6 +117,7 @@ const Contact = () => {
                       More Info
                     </label>
                     <textarea
+                      id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}

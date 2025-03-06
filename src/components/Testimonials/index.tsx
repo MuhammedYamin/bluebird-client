@@ -7,31 +7,29 @@ import SingleTestimonial from "./SingleTestimonial";
 const testimonialData: Testimonial[] = [
   {
     id: 1,
-    name: "Musharof Chy",
-    designation: "Founder @TailGrids",
+    name: "Rahul Shetty",
+    designation: "Homeowner, Mangalore",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-01.png",
+      "RR Builder made my dream home a reality! Their attention to detail and high-quality construction exceeded my expectations. The entire process was smooth and stress-free.",
     star: 5,
   },
   {
     id: 2,
-    name: "Devid Weilium",
-    designation: "Founder @UIdeck",
+    name: "Priya Menon",
+    designation: "Apartment Owner",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-02.png",
+      "The apartments by RR Builder are spacious, modern, and well-planned. The team was highly professional and ensured timely delivery. Highly recommended for anyone looking for a reliable builder!",
     star: 5,
   },
   {
     id: 3,
-    name: "Lethium Frenci",
-    designation: "Founder @Lineicons",
+    name: "Arjun Rao",
+    designation: "Investor",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-03.png",
+      "Investing in RR Builder properties was the best decision I made. The locations are prime, the designs are excellent, and the value appreciation is impressive. Truly a trustworthy real estate company!",
     star: 5,
   },
+  
 ];
 
 const Testimonials = () => {
@@ -39,8 +37,7 @@ const Testimonials = () => {
     <section className="dark:bg-bg-color-dark bg-gray-light relative z-10 py-16 md:py-20 lg:py-28" data-aos="zoom-out">
       <div className="container">
         <SectionTitle
-          title="What Our Users Says"
-          paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
+          title="What Our Clients Say"
           center
         />
 

@@ -7,9 +7,37 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog Details Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Blog Details Page for Startup Nextjs Template",
-  // other metadata
+  title: "Real Estate Blog | Property Trends, Investment Tips & Market Insights",
+  description:
+    "Stay ahead in real estate with expert insights, market trends, property investment strategies, and home-buying tips. Get the latest updates from RR Builder Mangalore.",
+  keywords: [
+    "real estate blog",
+    "property investment tips",
+    "real estate market trends",
+    "home buying guide",
+    "construction news",
+    "Mangalore real estate",
+    "RR Builder Mangalore",
+    "commercial property insights",
+    "luxury apartments",
+    "property development",
+  ],
+  robots: "index, follow",
+  openGraph: {
+    title: "Real Estate Blog | Property Trends, Investment Tips & Market Insights",
+    description:
+      "Explore the latest real estate news, market updates, investment strategies, and home-buying tips on the RR Builder Mangalore blog.",
+    url: "", // Replace with actual URL
+    type: "website",
+    images: [
+      {
+        url: "", // Replace with actual image URL
+        width: 1200,
+        height: 630,
+        alt: "Real Estate Blog - Market Trends & Investment Tips",
+      },
+    ],
+  },
 };
 
 const BlogSidebarPage = () => {

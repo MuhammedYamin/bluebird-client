@@ -6,26 +6,22 @@ import nodemailer from "nodemailer";
 
 export async function POST(req) {
   try {
-    const formData = await req.json(); // Get submitted form data
+    const formData = await req.json(); 
 
-    // Excel file path
     const filePath = path.join(process.cwd(), "private", "contacts.xlsx");
 
     let workbook;
     if (fs.existsSync(filePath)) {
-      // Load existing Excel file
       workbook = new ExcelJS.Workbook();
       await workbook.xlsx.readFile(filePath);
     } else {
-      // Create a new Excel file if it doesn't exist
       workbook = new ExcelJS.Workbook();
       const worksheet = workbook.addWorksheet("Contacts");
-      worksheet.addRow(["Name", "Phone", "Project", "Message", "Date"]); // Add headers
+      worksheet.addRow(["Name", "Phone", "Project", "Message", "Date"]); 
     }
 
     const worksheet = workbook.getWorksheet("Contacts");
 
-    // Append new data
     worksheet.addRow([
       formData.name,
       formData.phone,
@@ -34,23 +30,21 @@ export async function POST(req) {
       new Date().toLocaleString(),
     ]);
 
-    // Save Excel file
     await workbook.xlsx.writeFile(filePath);
 
-    // Send an email to the company owner
     let transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: process.env.EMAIL_PORT || 465,
       secure: process.env.EMAIL_SECURE === "true",
       auth: {
         user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD, // Use App Password
+        pass: process.env.EMAIL_PASSWORD, 
       },
     });
 
     await transporter.sendMail({
       from: `"RR Builder Contact Form" <${process.env.EMAIL_USERNAME}>`,
-      to: "rrbuilder.mangalore@gmail.com", // Company owner's email
+      to: "rrbuilder.mangalore@gmail.com", 
       subject: "Great News! A Potential Client Just Reached Out",
       html: `
         <p>Hello,</p>

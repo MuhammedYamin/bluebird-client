@@ -15,7 +15,7 @@ import Features from "@/components/Features";
 import Hero from "@/components/Hero";
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
-import { Metadata } from "next";
+
 
 
 
@@ -29,10 +29,8 @@ export default function Home() {
       <Hero />
       <Features />
       <Video />
-      <Brands />
       <AboutSectionOne />
       <AboutSectionTwo />
-      <Testimonials />
       <Blog />
       <Contact />
     </>

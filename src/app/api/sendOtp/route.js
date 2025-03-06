@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import otpStore from "@/app/utils/otpStore"; // Import global OTP store
-
+import otpStore from "@/app/utils/otpStore"; 
 export async function POST(req) {
   try {
     const { email } = await req.json();
-    const COMPANY_EMAIL = process.env.COMPANY_EMAIL; // Get authorized email
+    const COMPANY_EMAIL = process.env.COMPANY_EMAIL; 
 
     if (email !== COMPANY_EMAIL) {
       return NextResponse.json(
@@ -14,21 +13,20 @@ export async function POST(req) {
       );
     }
 
-    const OTP = Math.floor(100000 + Math.random() * 900000); // Generate 6-digit OTP
-    const expiresAt = Date.now() + 5 * 60 * 1000; // OTP expires in 5 minutes
+    const OTP = Math.floor(100000 + Math.random() * 900000);
+    const expiresAt = Date.now() + 5 * 60 * 1000; 
 
-    // ✅ Store OTP with expiry time
     otpStore.set(email, { OTP, expiresAt });
 
-    console.log(`Generated OTP for ${email}: ${OTP}`); // ✅ Debugging Log
+
 
     let transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
-      port: process.env.EMAIL_PORT || 465, // Use 465 for secure, 587 for non-secure
+      port: process.env.EMAIL_PORT || 465,
       secure: process.env.EMAIL_SECURE === "true",
       auth: {
         user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD, // Use App Password
+        pass: process.env.EMAIL_PASSWORD, 
       },
     });
 
