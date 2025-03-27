@@ -12,8 +12,8 @@ const DownloadPage = () => {
     setLoading(true);
     try {
       const response = await axios.post("/api/sendOtp", { email });
-      alert(response.data.message); // "OTP Sent Successfully!"
-      setOtpSent(true); // Hide email input & send OTP button
+      alert(response.data.message); 
+      setOtpSent(true); 
     } catch (error) {
       alert("Error sending OTP. Please try again.");
     }
@@ -26,7 +26,6 @@ const DownloadPage = () => {
         const response = await axios.post("/api/downloadform", { email, otp }, { responseType: "blob" });
 
         if (response.status === 200) {
-          // Create a download link for the file
           const url = window.URL.createObjectURL(new Blob([response.data]));
           const link = document.createElement("a");
           link.href = url;
@@ -49,7 +48,6 @@ const DownloadPage = () => {
         <h2 className="text-xl text-center    font-bold mb-4">Download User Details</h2>
 
         {!otpSent ? (
-          // Show email input and send OTP button if OTP not sent
           <>
             <input
               type="email"
@@ -68,7 +66,6 @@ const DownloadPage = () => {
             </button>
           </>
         ) : (
-          // Show OTP input and download button after OTP is sent
           <>
             <input
               type="text"

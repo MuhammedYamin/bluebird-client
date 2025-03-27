@@ -28,38 +28,17 @@ const AboutSectionOne = () => {
                 mb="44px"
               />
 
-              <div
-                className="mb-12 max-w-[570px] lg:mb-0"
-                data-wow-delay=".15s"
-              >
+              <div className="mb-12 max-w-[570px] lg:mb-0" data-wow-delay=".15s">
                 <div className="mx-[-12px] flex flex-wrap">
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
                     <List text="Premium Residences" />
-                    <List
-                      text="Effortless Ownership
-"
-                    />
-                    <List
-                      text="Buyer-Centric Platform
-
-
-
-
-
-
-"
-                    />
+                    <List text="Effortless Ownership" />
+                    <List text="Buyer-Centric Platform" />
                   </div>
 
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List
-                      text="Smart Investments
-"
-                    />
-                    <List
-                      text="Hassle-Free Buying
-"
-                    />
+                    <List text="Smart Investments" />
+                    <List text="Hassle-Free Buying" />
                     <List text="Exclusive Deals" />
                   </div>
                 </div>
@@ -67,7 +46,7 @@ const AboutSectionOne = () => {
             </div>
 
             <div className="w-full px-4 lg:w-1/2">
-              <div className="relative mx-auto mb-12 aspect-[25/24] max-w-[500px] lg:mr-0">
+              <div className="relative mx-auto mb-12 aspect-[25/24] max-w-[650px] lg:mr-0">
                 <Image
                   src="/images/about/about-image.png"
                   alt="about-image"
@@ -81,8 +60,6 @@ const AboutSectionOne = () => {
                   className="mx-auto hidden max-w-full drop-shadow-three dark:block dark:drop-shadow-none lg:mr-0"
                 />
               </div>
-
-
             </div>
           </div>
         </div>
