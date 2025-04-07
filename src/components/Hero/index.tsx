@@ -7,9 +7,12 @@ const Hero = () => {
     <>
       <section
         id="home"
-        className="bg-[url('/images/pic1.jpg')] bg-cover bg-center bg-no-repeat relative z-10 overflow-hidden bg-white min-h-screen pb-[200px] pt-[120px] dark:bg-gray-dark md:pb-[200px] md:pt-[150px] xl:pb-[250px] xl:pt-[180px] 2xl:pb-[250px] 2xl:pt-[210px]"
+        className="relative z-10 overflow-hidden min-h-screen pb-[200px] pt-[120px] md:pb-[200px] md:pt-[150px] xl:pb-[250px] xl:pt-[180px] 2xl:pb-[250px] 2xl:pt-[210px] bg-white dark:bg-gray-dark"
         data-aos="zoom-out"
       >
+        <div className="absolute inset-0 z-[-1] bg-[url('/images/pic1.jpg')] bg-cover bg-center bg-no-repeat" />
+        <div className="absolute top-0 left-0 w-full h-1/2 z-0 bg-gradient-to-b from-black/100 to-transparent" />
+
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">

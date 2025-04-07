@@ -104,7 +104,7 @@ const EMICalculator = () => {
                         htmlFor="principal"
                         className="mb-3 block text-sm font-medium text-dark dark:text-white"
                       >
-                        Asking Price (Rs):
+                        Loan amount (Rs):
                       </label>
                       <input
                         type="number"
