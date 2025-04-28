@@ -52,10 +52,27 @@ const ApartmentDetails = () => {
                     <ul className="space-y-4 text-lg">
                       <li>🚶‍♂️ <strong>Bus Stop:</strong> 200 meters</li>
                       <li>🏫 <strong>School & Supermarket:</strong> Within 50-100 meters</li>
-                      <li>🕌 <strong>Masjid:</strong> Just 10 meters away</li>
                       <li>🏥 <strong>Hospital:</strong> 200 meters</li>
                       <li>🚗 <strong>Main Road Access:</strong> 50 meters</li>
                     </ul>
+
+                    <h3 className="text-2xl font-semibold mt-10 mb-6">Location</h3>
+                    <ul className="space-y-4 text-lg">
+                      <li>📍
+                        <strong>
+                          <a
+                            href="https://maps.app.goo.gl/4EmKxvpYdTAFPszB9"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary"
+                          >
+                            Near Arafa Masjid Mithabail BC Road Bantwal Mangalore
+                          </a>
+                        </strong>
+                      </li>
+                    </ul>
+
+
 
                     <div className="mt-12 text-center lg:text-left">
                       <p className="text-xl font-medium mb-6">Secure your dream home today!</p>

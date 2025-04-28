@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { FaHeadset } from "react-icons/fa"; // Import Robot Icon
-import { IoClose } from "react-icons/io5"; // Close Icon
+import { FaHeadset } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([{ text: "Hi! How can I assist you?", fromBot: true }]);
@@ -26,7 +26,7 @@ const Chatbot = () => {
       setShowTyping(false);
       setMessages((prev) => [...prev, { text, fromBot: true }]);
       if (callback) callback();
-    }, 1000); // Simulated typing delay
+    }, 1000);
   };
 
   const handleBotClick = () => {
@@ -67,12 +67,17 @@ const Chatbot = () => {
     setShowTalkOptions(false);
 
     if (method === "Call") {
-      simulateBotResponse("Please share your number so our team can contact you.", () => {
-        setShowNumberInput(true);
-      });
+      simulateBotResponse(
+        'You can call us directly by clicking this number: ',
+        () => {
+          simulateBotResponse(
+            '<a href="tel:+916361352189" class="text-blue-600 underline">📞 +916361352189</a>'
+          );
+        }
+      );
     } else if (method === "WhatsApp") {
       setTimeout(() => {
-        window.open("https://wa.me/+917760476139", "_blank");
+        window.open("https://wa.me/+916361352189", "_blank");
       }, 1000);
     }
   };
@@ -84,7 +89,6 @@ const Chatbot = () => {
 
       simulateBotResponse("Thank you! Our team will contact you soon.");
 
-      // Send the number to owner's WhatsApp
       const whatsappMessage = `New customer request:\n\nPhone: ${userNumber}`;
       window.open(`https://wa.me/+917760476139?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
     }
@@ -92,42 +96,47 @@ const Chatbot = () => {
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      {/* Chatbot Icon */}
       <button
-        className="p-3 bg-blue-600 text-white rounded-full flex items-center shadow-lg focus:outline-none"
+        className="p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition-all duration-300"
         onClick={handleBotClick}
       >
-        <FaHeadset className="text-xl" />
+        <FaHeadset size={28} /> {/* Matches WhatsApp icon size */}
       </button>
 
 
-      {/* Chat Window */}
+
       {showOptions && (
-  <div className="fixed bottom-20 right-4 sm:right-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg w-[90%] sm:w-80 max-h-[400px] overflow-auto flex flex-col">
-    {/* Header with Close Button */}
-    <div className="sticky top-0 bg-white dark:bg-gray-800 z-10 flex justify-between items-center pb-2 border-b border-gray-300 dark:border-gray-600 p-2">
-      <span className="text-lg font-semibold text-gray-800 dark:text-white">RR Assistant</span>
-      <button onClick={handleClose} className="text-gray-600 dark:text-gray-300">
-        <IoClose size={22} />
-      </button>
-    </div>
+        <div className="fixed bottom-20 right-4 sm:right-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg w-[90%] sm:w-80 max-h-[400px] overflow-auto flex flex-col">
+          <div className="sticky top-0 bg-white dark:bg-gray-800 z-10 flex justify-between items-center pb-2 border-b border-gray-300 dark:border-gray-600 p-2">
+            <span className="text-lg font-semibold text-gray-800 dark:text-white">RR Assistant</span>
+            <button onClick={handleClose} className="text-gray-600 dark:text-gray-300">
+              <IoClose size={22} />
+            </button>
+          </div>
 
 
-          {/* Chat Messages */}
           <div className="flex flex-col space-y-2 mt-3">
             {messages.map((msg, index) => (
-              <div key={index} className={`flex ${msg.fromBot ? "items-start" : "justify-end"}`}>
-                {msg.fromBot && <FaHeadset className="text-blue-600 mr-2 mt-1" size={20} />}
-                <span
-                  className={`px-3 py-2 rounded-lg text-sm ${msg.fromBot ? "bg-gray-200 dark:bg-gray-700 text-black dark:text-white" : "bg-blue-500 text-white"
-                    }`}
-                >
-                  {msg.text}
-                </span>
+              <div
+                key={index}
+                className={`flex ${msg.fromBot ? "items-start" : "justify-end"}`}
+              >
+                {msg.fromBot && (
+                  <FaHeadset className="text-blue-600 mr-2 mt-1" size={20} />
+                )}
+                {msg.fromBot ? (
+                  <span
+                    className="px-3 py-2 rounded-lg text-sm bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+                    dangerouslySetInnerHTML={{ __html: msg.text }}
+                  />
+                ) : (
+                  <span className="px-3 py-2 rounded-lg text-sm bg-blue-500 text-white">
+                    {msg.text}
+                  </span>
+                )}
               </div>
             ))}
 
-            {/* Typing Animation */}
             {showTyping && (
               <div className="flex items-start">
                 <FaHeadset className="text-blue-600 mr-2 mt-1" size={20} />
@@ -138,7 +147,6 @@ const Chatbot = () => {
             )}
           </div>
 
-          {/* Initial Options after greeting */}
           {messages.length === 1 && (
             <div className="flex flex-col mt-3 gap-2">
               <button onClick={() => handleOptionSelect("Interested in 2BHK or 3BHK")} className="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-lg transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-500"
@@ -156,7 +164,6 @@ const Chatbot = () => {
             </div>
           )}
 
-          {/* Show 2BHK/3BHK selection */}
           {messages.some((m) => m.text === "What are you interested in?") && selectedProperty === null && (
             <div className="flex gap-2 mt-3">
               <button onClick={() => handlePropertySelection("2BHK")} className="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-lg transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-500"
@@ -170,7 +177,6 @@ const Chatbot = () => {
             </div>
           )}
 
-          {/* Contact form button */}
           {showContactFormButton && (
             <button onClick={() => router.push("/contact")} className="bg-gray-200 dark:bg-gray-600 px-3 py-1 mt-3 rounded-lg transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-500"
             >
@@ -178,7 +184,6 @@ const Chatbot = () => {
             </button>
           )}
 
-          {/* Talk options */}
           {showTalkOptions && (
             <div className="flex gap-2 mt-3">
               <button
@@ -197,7 +202,6 @@ const Chatbot = () => {
           )}
 
 
-          {/* Number input for Call */}
           {showNumberInput && (
             <div className="mt-3">
               <input type="text" placeholder="Please enter your number" value={userNumber} onChange={(e) => setUserNumber(e.target.value)} className="w-full p-2 border rounded" />

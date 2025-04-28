@@ -11,6 +11,8 @@ import "../styles/index.css";
 import { Metadata } from "next";
 import { Providers } from "./providers";
 import Chatbot from "@/components/Chatbot/Chatbot";
+import { FaWhatsapp } from "react-icons/fa"; // Install react-icons if not already installed
+
 
 
 
@@ -45,7 +47,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "", // Replace with actual image URL
+        url: "https://9d1a-2401-4900-91db-3d95-f8aa-a92f-ba98-4e1.ngrok-free.app/images/logohalf.png", // Replace with actual image URL
         width: 1200,
         height: 630,
         alt: "RR Builder Mangalore - Real Estate & Construction Services",
@@ -86,9 +88,16 @@ export default function RootLayout({
           src="https://chatling.ai/js/embed.js"
           async
         /> */}
+         <a
+      href="https://wa.me/916361352189" 
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fixed bottom-20 right-4 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-3 shadow-lg transition-all duration-300"
+    >
+      <FaWhatsapp size={28} />
+    </a>
         <Chatbot/>
       </body>
     </html>
   );
 }
-
